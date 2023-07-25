@@ -157,12 +157,14 @@ function ColorTool(props: any) {
     // @ts-expect-error ts-migrate(7015) FIXME: Element implicitly has an 'any' type because index... Remove this comment to see the full error message
     const color = colors[hue][shades[shade]]
 
-    setState({
-      ...state,
-      [`${name}Hue`]: hue,
-      [name]: color,
-      [`${name}Input`]: color,
-    })
+    if (color) {
+      setState({
+        ...state,
+        [`${name}Hue`]: hue,
+        [name]: color,
+        [`${name}Input`]: color,
+      })
+    }
   }
 
   const handleChangeShade =
